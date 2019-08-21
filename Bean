@@ -1,0 +1,27 @@
+public void quickSort(int[] intArr,int l,int r){
+   int low = l;
+   int high = r;
+   
+   int base = intArr[low];    //base num
+   while(low < high){   //cycle condition
+      
+      while(low < high && intArr[high] >= base)  {                 //from right to left    to find num smaller than base
+          high--;
+      }
+      if(low < high){
+        intArr[low] = intArr[high];
+        low++;
+      }
+      
+      while(low < high && intArr[low] > base){                    //from left to right    to find num  bigger than base
+        low++;
+      }
+      if(low < high){
+        intArr[high] = intArr[low];
+        high--;
+      }
+      intArr[low] = base;     //
+      quickSort(intArr,l,low-1);              //quickSort left part 
+      quickSort(intArr,low+1,r);              //quickSort right part
+   }
+}
